@@ -107,6 +107,9 @@ ie = IECore()
 ppyolo_path = r"D:\Python\PaddleDetection\deploy\models\ppyolo_mbv3_large_voc_infer\ir\inference.xml"
 net = ie.read_network(ppyolo_path)
 
+net.reshape({'image': [1, 3, 320, 320], 'im_shape': [
+            1, 2], 'scale_factor': [1, 2]})
+
 exec_net = ie.load_network(net, device)
 
 label_list = []
