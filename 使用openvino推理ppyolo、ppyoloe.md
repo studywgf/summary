@@ -1,5 +1,5 @@
 ---
-title: Use openvino inference ppyolo
+title: Use openvino inference ppyolo and ppyoloe
 tags: 'python,openvino'
 ---
 
@@ -15,3 +15,6 @@ where the extras parameter specifies one or more deep learning frameworks via th
 ```
 mo -h
 ```
+You will see the help message for Model Optimizer if installation finished successfully.
+ ## Converting a paddlepaddle model
+ 
