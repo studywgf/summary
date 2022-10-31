@@ -3,7 +3,7 @@ title: Use openvino inference ppyolo and ppyoloe
 tags: 'python,openvino'
 ---
 
-
+# Step1: Build the environment
 ## Install the package
 [Openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
 ```
@@ -17,8 +17,11 @@ mo -h
 ```
 Notes: mo express model optimizer
 You will see the help message for Model Optimizer if installation finished successfully.
+# Optional: Convert to ir
+Notes: Ir express intermediate representation format.
+The OpenVINO IR can be additionally optimized for inference by Post-training optimization that applies post-training quantization methods.
  ## Converting a paddlepaddle model
- For ppyolo
+ For ppyolo:
  ```
 mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
@@ -27,7 +30,7 @@ mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --input_model= < PATH_TO_MODEL_DIR\model.pdmodel>
  ```
  
- for ppyoloe: compare with ppyolo, command not have im_shape node
+ For ppyoloe: compare with ppyolo, command not have im_shape node
  ```
  mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
@@ -36,7 +39,6 @@ mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --input_model= < PATH_TO_MODEL_DIR\model.pdmodel>
  ```
  ## 0penvino inference engine for ir inference(ppyolo)
- Notes: ir express intermediate representation format
 ```
 import numpy as np
 import cv2
