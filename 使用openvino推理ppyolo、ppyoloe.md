@@ -5,20 +5,20 @@ tags: 'python,openvino'
 
 
 ## Install the package
-[openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
+[Openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
 ```
 pip install openvino-dev[extras]
 ```
-where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.
+Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.
 
 ## Verify the installation
 ```
 mo -h
 ```
-notes: mo express model optimizer
+Notes: mo express model optimizer
 You will see the help message for Model Optimizer if installation finished successfully.
  ## Converting a paddlepaddle model
- for ppyolo
+ For ppyolo
  ```
 mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
@@ -36,7 +36,7 @@ mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --input_model= < PATH_TO_MODEL_DIR\model.pdmodel>
  ```
  ## 0penvino inference engine for ir inference(ppyolo)
- notes: ir express intermediate representation format
+ Notes: ir express intermediate representation format
 ```
 import numpy as np
 import cv2
