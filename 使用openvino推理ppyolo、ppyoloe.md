@@ -7,15 +7,13 @@ tags: 'python,openvino'
 
 ## Install the package
 [Openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
-```bash
-pip install openvino-dev[extras]
-```
+>pip install openvino-dev[extras]
+
 Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.s
 
 ## Verify the installation
-```bash
-mo -h
-```
+>mo -h
+
 Notes: MO express model optimizer
 You will see the help message for Model Optimizer if installation finished successfully.
 
