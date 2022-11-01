@@ -7,13 +7,13 @@ tags: 'python,openvino'
 
 ## Install the package
 [Openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
-```
+```bash
 pip install openvino-dev[extras]
 ```
 Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.s
 
 ## Verify the installation
-```
+```bash
 mo -h
 ```
 Notes: MO express model optimizer
@@ -25,7 +25,7 @@ The OpenVINO IR can be additionally optimized for inference by Post-training opt
 
  ## Converting a paddlepaddle model
  For ppyolo:
-```
+```bash
 mo --output_dir=<PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \`
 --input_shape=[1,3,320,320],[1,2],[1,2] \
@@ -142,7 +142,7 @@ ImportError: DLL load failed while importing ie_api
 If you use python3.8 or higher version, the error resolution as follows:
 Enter file: D:\Anaconda\envs\testopenvino\Lib\site-packages\openvino\__init__.py
 Find lines 25 and 26:
-```
+```python
 if (3, 8) <= sys.version_info:
 	os.add_dll_directory(os.path.abspath(lib_path))
 ```
@@ -150,7 +150,7 @@ Add after line 26:
 >os.environ['PATH'] = os.path.abspath(lib_path) + ';' + os.environ['PATH']
 
 Sample yaml file:
-```
+```yaml
 mode: paddle
 draw_threshold: 0.5
 metric: VOC
