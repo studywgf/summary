@@ -40,6 +40,7 @@ mo --output_dir <PATH_TO_OUTPUT_DIR> \
  ```
  If you not sure model properties, you can use Netron tools to see.
  [Netron client](https://netron.app/)
+ Or you can not specific those properties, because it can be declared in code.
  ## 0penvino inference engine for ir inference(ppyolo)
 ```
 import numpy as np
