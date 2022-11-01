@@ -4,12 +4,13 @@ tags: 'python,openvino'
 ---
 
 # Step1: Build the environment
+
 ## Install the package
 [Openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
 ```
 pip install openvino-dev[extras]
 ```
-Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.
+Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.s
 
 ## Verify the installation
 ```
@@ -17,9 +18,11 @@ mo -h
 ```
 Notes: MO express model optimizer
 You will see the help message for Model Optimizer if installation finished successfully.
+
 # Optional: Convert to IR
 Notes: IR express intermediate representation format.
 The OpenVINO IR can be additionally optimized for inference by Post-training optimization that applies post-training quantization methods.
+
  ## Converting a paddlepaddle model
  For ppyolo:
 ```
