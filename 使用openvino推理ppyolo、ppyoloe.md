@@ -34,10 +34,12 @@ mo --output_dir <PATH_TO_OUTPUT_DIR> \
  ```
  mo --output_dir <PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
---input_shape=[1,3,320,320],[1,2] \
+--input_shape=[1,3,640,640],[1,2] \
 --input=imagescale_factor
 --input_model= < PATH_TO_MODEL_DIR\model.pdmodel>
  ```
+ If you not sure model properties, you can use Netron tools to see.
+ [Netron client](https://netron.app/)
  ## 0penvino inference engine for ir inference(ppyolo)
 ```
 import numpy as np
