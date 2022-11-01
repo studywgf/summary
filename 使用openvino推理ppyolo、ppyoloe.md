@@ -30,7 +30,7 @@ mo --output_dir=<PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \`
 --input_shape=[1,3,320,320],[1,2],[1,2] \
 --input=image,im_shape,scale_factor
---input_model= < PATH_TO_MODEL_DIR\model.pdmodel>
+--input_model=< PATH_TO_MODEL_DIR\model.pdmodel>
 ```
 
 For ppyoloe: compare with ppyolo, command not have im_shape node
