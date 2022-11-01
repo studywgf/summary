@@ -23,7 +23,7 @@ The OpenVINO IR can be additionally optimized for inference by Post-training opt
  ## Converting a paddlepaddle model
  For ppyolo:
  ```
-mo --output_dir <PATH_TO_OUTPUT_DIR> \
+mo --output_dir=<PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
 --input_shape=[1,3,320,320],[1,2],[1,2] \
 --input=image,im_shape,scale_factor
