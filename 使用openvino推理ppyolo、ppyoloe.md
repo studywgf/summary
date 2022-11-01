@@ -43,7 +43,6 @@ mo --output_dir <PATH_TO_OUTPUT_DIR> \
 import numpy as np
 import cv2
 from openvino.inference_engine import IECore
-
 import time
 import yaml
 from yaml.loader import SafeLoader
@@ -57,8 +56,6 @@ Arguments:
 Return:
   img.astype(np.float32): Resized image's ndarray data of dtype is np.float32.
 '''
-
-
 def image_preprocess(input_image: np.ndarray, size: int) -> np.ndarray:
     img = cv2.resize(input_image, (size, size))
     img = np.transpose(img, [2, 0, 1]) / 255
@@ -72,7 +69,6 @@ def image_preprocess(input_image: np.ndarray, size: int) -> np.ndarray:
     img /= img_std
     return img.astype(np.float32)
 
-
 '''
 Function: Draw a rectangular box.
 Arguments:
@@ -84,8 +80,6 @@ Arguments:
 Return:
   img: Image's ndarray of drew a rectangular box.
 '''
-
-
 def draw_box(img: np.ndarray, results: Dict, label_list: List, scale_x: float, scale_y: float) -> np.ndarray:
     for i in range(len(results)):
         bbox = results[i, 2:]
@@ -100,7 +94,6 @@ def draw_box(img: np.ndarray, results: Dict, label_list: List, scale_x: float, s
             cv2.rectangle(img, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
             cv2.putText(img, label_text, (xmin, ymin), font, 1.5, (255, 255, 255), 2, cv2.LINE_AA)
     return img
-
 
 device = 'CPU'
 ie = IECore()
