@@ -130,6 +130,18 @@ result_image = draw_box(input_image, result_ie[0], label_list, input_image.shape
 
 cv2.imwrite("test.png", result_image)
 ```
+If occur error: 
+ImportError: DLL load failed while importing ie_api
+If you use python3.8 or higher version, the error resolution as follows:
+Enter file: D:\Anaconda\envs\testopenvino\Lib\site-packages\openvino\__init__.py
+Find lines 25 and 26:
+```
+if (3, 8) <= sys.version_info:
+	os.add_dll_directory(os.path.abspath(lib_path))
+```
+Add after line 26:
+>os.environ['PATH'] = os.path.abspath(lib_path) + ';' + os.environ['PATH']
+
 Sample yaml file:
 ```
 mode: paddle
