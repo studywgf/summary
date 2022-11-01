@@ -22,16 +22,16 @@ Notes: IR express intermediate representation format.
 The OpenVINO IR can be additionally optimized for inference by Post-training optimization that applies post-training quantization methods.
  ## Converting a paddlepaddle model
  For ppyolo:
- ```
+```
 mo --output_dir=<PATH_TO_OUTPUT_DIR> \
---reverse_input_channels \
+--reverse_input_channels \`
 --input_shape=[1,3,320,320],[1,2],[1,2] \
 --input=image,im_shape,scale_factor
 --input_model= < PATH_TO_MODEL_DIR\model.pdmodel>
- ```
- 
- For ppyoloe: compare with ppyolo, command not have im_shape node
- ```
+```
+
+For ppyoloe: compare with ppyolo, command not have im_shape node
+```bash
  mo --output_dir=<PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
 --input_shape=[1,3,640,640],[1,2] \
@@ -42,7 +42,8 @@ mo --output_dir=<PATH_TO_OUTPUT_DIR> \
  [Netron client](https://netron.app/)
  Or you can not specific those properties, because it can be declared in code.
  ## 0penvino inference engine for ir inference(ppyolo)
-```
+ 
+```python
 import numpy as np
 import cv2
 from openvino.inference_engine import IECore
