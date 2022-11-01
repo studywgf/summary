@@ -15,10 +15,10 @@ Where the extras parameter specifies one or more deep learning frameworks via th
 ```
 mo -h
 ```
-Notes: mo express model optimizer
+Notes: MO express model optimizer
 You will see the help message for Model Optimizer if installation finished successfully.
-# Optional: Convert to ir
-Notes: Ir express intermediate representation format.
+# Optional: Convert to IR
+Notes: IR express intermediate representation format.
 The OpenVINO IR can be additionally optimized for inference by Post-training optimization that applies post-training quantization methods.
  ## Converting a paddlepaddle model
  For ppyolo:
