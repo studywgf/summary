@@ -1,5 +1,5 @@
 ---
-title: Use openvino inference ppyolo and ppyoloe
+title: Use openvino inference deploy paddlepaddle
 tags: 'python,openvino'
 ---
 
@@ -9,7 +9,9 @@ tags: 'python,openvino'
 [Openvino document](https://docs.openvino.ai/latest/openvino_docs_install_guides_install_dev_tools.html)
 >pip install openvino-dev[extras]
 
-Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.s
+Where the extras parameter specifies one or more deep learning frameworks via these values: caffe, kaldi, mxnet, onnx, pytorch, tensorflow, tensorflow2, paddle. Make sure that you install the corresponding frameworks for your models.
+For example, to install and configure the components for working with TensorFlow 2.x and ONNX, use the following command:
+>pip install openvino-dev[tensorflow2,onnx]
 
 ## Verify the installation
 >mo -h
@@ -25,7 +27,7 @@ The OpenVINO IR can be additionally optimized for inference by Post-training opt
  For ppyolo:
 ```bash
 mo --output_dir=<PATH_TO_OUTPUT_DIR> \
---reverse_input_channels \`
+--reverse_input_channels \
 --input_shape=[1,3,320,320],[1,2],[1,2] \
 --input=image,im_shape,scale_factor
 --input_model=< PATH_TO_MODEL_DIR\model.pdmodel>
