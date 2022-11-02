@@ -33,7 +33,7 @@ mo --output_dir=<PATH_TO_OUTPUT_DIR> \
 --input_model=< PATH_TO_MODEL_DIR\model.pdmodel>
 ```
 
-For ppyoloe: compare with ppyolo, command not have im_shape node
+For ppyoloe: Compare with ppyolo, command not have im_shape property.
 ```bash
  mo --output_dir=<PATH_TO_OUTPUT_DIR> \
 --reverse_input_channels \
