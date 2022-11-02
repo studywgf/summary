@@ -44,7 +44,7 @@ For ppyoloe: compare with ppyolo, command not have im_shape node
  If you not sure model properties, you can use Netron tools to see.
  [Netron client](https://netron.app/)
  Or you can not specific those properties, because it can be declared in code.
- ## 0penvino inference engine for ir inference(ppyolo)
+ ## 0penvino inference engine for IR inference(ppyolo)
  
 ```python
 import numpy as np
@@ -180,4 +180,4 @@ label_list:
 ```
 For ppyoloe, inputs not have im_shape.
 ## 0penvino inference engine for model inference(ppyolo)
-Compare with ir inference, change the read xml file to a pdmodel file.
+Compare with IR inference, change the read xml file to a pdmodel file.
