@@ -141,7 +141,7 @@ result_image = draw_box(input_image, results, label_list, input_image.shape[1] /
 
 cv2.imwrite("test.jpg", result_image)
 ```
-If occur error: 
+If occur error when use inference engine API: 
 ImportError: DLL load failed while importing ie_api
 If you use python3.8 or higher version, the error resolution as follows:
 Enter file: D:\Anaconda\envs\testopenvino\Lib\site-packages\openvino\__init__.py
