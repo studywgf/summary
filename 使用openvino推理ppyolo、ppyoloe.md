@@ -49,7 +49,7 @@ For ppyoloe: Compare with ppyolo, command not have im_shape property.
 ```python
 import numpy as np
 import cv2
-from openvino.inference_engine import IECore
+import openvino.runtime as ov
 import time
 import yaml
 from yaml.loader import SafeLoader
@@ -92,7 +92,7 @@ def draw_box(img: np.ndarray, results: Dict, label_list: List, scale_x: float, s
         bbox = results[i, 2:]
         label_id = int(results[i, 0])
         score = results[i, 1]
-        if (score > 0.20):
+        if (score > 0.5):
             xmin, ymin, xmax, ymax = [int(bbox[0] * scale_x), int(bbox[1] * scale_y),
                                       int(bbox[2] * scale_x), int(bbox[3] * scale_y)]
             cv2.rectangle(img, (xmin, ymin), (xmax, ymax), (0, 255, 0), 3)
@@ -102,23 +102,20 @@ def draw_box(img: np.ndarray, results: Dict, label_list: List, scale_x: float, s
             cv2.putText(img, label_text, (xmin, ymin), font, 1.5, (255, 255, 255), 2, cv2.LINE_AA)
     return img
 
-device = 'CPU'
-ie = IECore()
-ppyolo_path = r"D:\Python\PaddleDetection\deploy\models\ppyolo_mbv3_large_voc_infer\ir\inference.xml"
-net = ie.read_network(ppyolo_path)
+core = ov.Core()
 
-net.reshape({'image': [1, 3, 320, 320], 'im_shape': [
-            1, 2], 'scale_factor': [1, 2]})
+model = core.read_model(r"D:\Python\PaddleDetection\deploy\models\ppyolo_mbv3_large_voc_infer\ir\inference.xml")
 
-exec_net = ie.load_network(net, device)
+model.reshape({
+    'image': [1, 3, 320, 320], "im_shape": [1, 2],
+    "scale_factor": [1, 2]
+})
 
-label_list = []
-pdmodel_config = r"D:\Python\PaddleDetection\deploy\models\ppyolo_mbv3_large_voc_infer\infer_cfg.yml"
-with open(pdmodel_config) as f:
-    data = yaml.load(f, Loader=SafeLoader)
-label_list = data['label_list']
+compiled_model = core.compile_model(model, "CPU")
 
-input_image = cv2.imread(r"D:\Python\PaddleDetection\deploy\images\1663742739.6263561-3.jpg")
+infer_request = compiled_model.create_infer_request()
+
+input_image = cv2.imread(r"D:\Python\mqtt_test\stranger\1663573552.04274-3.jpg")
 test_image = image_preprocess(input_image, 320)
 test_im_shape = np.array([[320, 320]]).astype('float32')
 test_scale_factor = np.array([[1, 2]]).astype('float32')
@@ -127,15 +124,22 @@ inputs_dict = {'image': test_image, "im_shape": test_im_shape,
                "scale_factor": test_scale_factor}
 
 start_time = time.time()
-output = exec_net.infer(inputs_dict)
+results = infer_request.infer(inputs_dict)
 end_time = time.time()
 print("time: %.2f ms" % (1000 * (end_time - start_time)))
 
-result_ie = list(output.values())
-result_image = draw_box(input_image, result_ie[0], label_list, input_image.shape[1] / 320 * 2,
+results = list(results.values())[0]
+
+label_list = []
+pdmodel_config = r"D:\Python\PaddleDetection\deploy\models\ppyolo_mbv3_large_voc_infer\infer_cfg.yml"
+with open(pdmodel_config) as f:
+    data = yaml.load(f, Loader=SafeLoader)
+label_list = data['label_list']
+
+result_image = draw_box(input_image, results, label_list, input_image.shape[1] / 320 * 2,
                         input_image.shape[0] / 320)
 
-cv2.imwrite("test.png", result_image)
+cv2.imwrite("test.jpg", result_image)
 ```
 If occur error: 
 ImportError: DLL load failed while importing ie_api
